@@ -13,9 +13,6 @@ public class Pizza {
         this.navn = navn;
         this.ingredienser = ingredienser;
         this.pris = pris;
-
-        // pizzaStatus.
-        boolean pizzaStatus;
     }
 
     public String toString(){
