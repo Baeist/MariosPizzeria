@@ -8,7 +8,7 @@ public class Pizza {
     private boolean pizzaStatus;
 
     // Constructore
-    public Pizza (String nummer, String navn, String ingredienser, String pris) {
+    public Pizza (int nummer, String navn, String ingredienser, int pris) {
         this.nummer = nummer;
         this.navn = navn;
         this.ingredienser = ingredienser;
