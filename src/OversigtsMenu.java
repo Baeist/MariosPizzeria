@@ -2,6 +2,7 @@ import java.util.Scanner;
 class OversigtsMenu {
     private boolean running = true;
     PizzaMenu pizzaMenu = new PizzaMenu();
+    Ordre pizzaOrdre = new Ordre();
 
     public void run(){
         String [] menu = {"1: Ny ordre.", "2: Se Menu.", "3: Se ordre liste.", "4: Afslut ordre og put i arkiv.", "5: Se arkiv.", "6: Rediger ordreliste", "7: Hjælp", "8: Luk program"};
@@ -14,6 +15,7 @@ class OversigtsMenu {
 
                 switch (choice) {
                     case 1:
+                        pizzaOrdre.addPizzaToOrder();
                         break;
                     case 2:
                         pizzaMenu.printMenu();

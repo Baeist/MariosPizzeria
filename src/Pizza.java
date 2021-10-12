@@ -1,6 +1,5 @@
 public class Pizza {
 
-
     private String navn;
     private int nummer;
     private String ingredienser;

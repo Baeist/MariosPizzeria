@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PizzaMenu {
 
     Pizza p1 = new Pizza(1, "Vesuvio", "tomatsauce, ost, skinke og oregano", 57);
@@ -15,10 +17,27 @@ public class PizzaMenu {
     Pizza p13 = new Pizza (13, "Venezia", "tomatsauce, ost, pepperoni, bacon, løg og oregano", 61);
     Pizza p14 = new Pizza (14, "Mafia", "tomatsauce, ost, pepperoni, bacon, løg og oregano", 61);
 
-    PizzaMenu() {  //nummer, navn, ingredienser, pris
-     
-    }
+    PizzaMenu() {  }
 
+    public ArrayList pizzaArrayMenu(){
+        ArrayList<Pizza> pizzaArrayList = new ArrayList<Pizza>();
+        pizzaArrayList.add(p1);
+        pizzaArrayList.add(p2);
+        pizzaArrayList.add(p3);
+        pizzaArrayList.add(p4);
+        pizzaArrayList.add(p5);
+        pizzaArrayList.add(p6);
+        pizzaArrayList.add(p7);
+        pizzaArrayList.add(p8);
+        pizzaArrayList.add(p9);
+        pizzaArrayList.add(p10);
+        pizzaArrayList.add(p11);
+        pizzaArrayList.add(p12);
+        pizzaArrayList.add(p13);
+        pizzaArrayList.add(p14);
+
+        return pizzaArrayList;
+    }
 
     public void printMenu(){
         System.out.println(p1);
@@ -36,4 +55,5 @@ public class PizzaMenu {
         System.out.println(p13);
         System.out.println(p14);
     }
+
 }
