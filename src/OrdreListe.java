@@ -2,13 +2,20 @@ import java.util.ArrayList;
 
 public class OrdreListe {
 
-    ArrayList<Ordre> currentOrdre = new ArrayList<>();
+    ArrayList<Ordre> currentOrders = new ArrayList<>();
 
-    public void addOrdre(Ordre newOrdre, int hour, int minute){
-        currentOrdre.add(newOrdre);
+    public OrdreListe(){};
+
+
+    public void addOrdre(Ordre newOrder){
+        currentOrders.add(newOrder);
         }
 
-       // public void showCurrent(ArrayList currentOrdre, )
+       public void showCurrent(){
+
+            System.out.println(currentOrders);
+
+       }
 
 
 
