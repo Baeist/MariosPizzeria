@@ -3,6 +3,7 @@ public class Main {
         OversigtsMenu startMenu = new OversigtsMenu();
 
         startMenu.run();
+        System.out.println("test at jeg kan comittet");
 
     }
 }
