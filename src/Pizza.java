@@ -17,4 +17,8 @@ public class Pizza {
         // pizzaStatus.
         boolean pizzaStatus;
     }
+
+    public String toString(){
+        return  (nummer + " " + navn + " " + pris + "\n" + ingredienser);
+    }
 }
