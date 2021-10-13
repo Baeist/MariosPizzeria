@@ -3,11 +3,9 @@ import java.util.ArrayList;
 
 public class Ordre {
     private int ordreID;
-    // private int day;              2  // angive dato giver mere mening når man starter programmet, så bare dato stamp fra main måske
-    // private int month;
     private int hour;               // pizza skal være klar kl
     private int minute;
-    private String ordreStatus;     // måske
+    // private String ordreStatus;     // måske
     private int pizzaNummer;
 
     Ordre currentOrdre;
@@ -54,51 +52,18 @@ public class Ordre {
         setMenuListePizza();
 
 
-        do {
-            System.out.println("Vælg antal pizzaer:");
-            if (scanner.hasNextInt()) {
-                amountOfPizzas = scanner.nextInt();
-                check = true; }
-            else{check = false;}
-            scanner.nextLine();
-        }
-        while(!check);
+        amountOfPizzas = getUserInt("Vælg antal pizzaer");
 
         System.out.println("Vælg pizza nummre:");
         for(int i = 0; i < amountOfPizzas; i++)
         {
-            do{
-                if (scanner.hasNextInt()) {
-                this.pizzaNummer = scanner.nextInt();
-                   check = false;
-                   }
-                   else
-                   {check = true;}
-                scanner.nextLine();
-               }
-               while(check);
+            this.pizzaNummer = getUserInt("");
                setNewOrderPizza(pizzaNummer);
         }
 
-        do {
-            System.out.println("Vælg afhentnings tidspunkt timetal:");
-            if (scanner.hasNextInt()) {
-                this.hour = scanner.nextInt();
-                check = true; }
-            else{check = false;}
-            scanner.nextLine();
-        }
-        while(!check);
+        this.hour = getUserInt("Vælg timetal for levering:");
 
-        do {
-            System.out.println("Vælg afhentnings tidspunkt minutter:");
-            if (scanner.hasNextInt()) {
-                this.minute = scanner.nextInt();
-                check = true; }
-            else{check = false;}
-            scanner.nextLine();
-        }
-        while(!check);
+        this.minute = getUserInt("Vælg minut tid:");
 
         System.out.println("Evt. kommentarer(j)?");
         accept = scanner.nextLine();
@@ -119,12 +84,31 @@ public class Ordre {
             getOrdreID(ordreID);
             currentOrdreListe.addOrdre(currentOrdre);
 
-            System.out.println(currentOrdreListe.getCurrentOrders().get(0));
+            System.out.println(currentOrdreListe.getCurrentOrders().get(ordreID -1));
         }
-
+        System.out.println(ordreID);
     }
 
     public String toString() {
         return "Ordre " + ordreID;
     }
+
+
+    public int getUserInt(String prompt){
+        Scanner scanner = new Scanner(System.in);
+        boolean check = true;
+        int userInput = -1;
+        do{
+            System.out.println(prompt);
+            if (scanner.hasNextInt()) {
+                userInput = scanner.nextInt();
+                check = true; }
+            else{check = false;}
+            scanner.nextLine();
+        }
+        while (!check);
+        return userInput;
+    }
+
+
 }

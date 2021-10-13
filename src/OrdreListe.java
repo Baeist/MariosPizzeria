@@ -13,7 +13,7 @@ public class OrdreListe {
 
        public void showCurrent(){
 
-            System.out.println(currentOrders);
+          System.out.println();
 
        }
 
