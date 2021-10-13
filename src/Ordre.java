@@ -4,15 +4,12 @@ import java.util.ArrayList;
 public class Ordre {
     private static int ordreIDIncrementer = 0;
     private int ordreID = ordreIDIncrementer;
-    // private int day;              2  // angive dato giver mere mening når man starter programmet, så bare dato stamp fra main måske
-    // private int month;
     private int hour;               // pizza skal være klar kl
     private int minute;
     private String ordreStatus;     // måske
     private int pizzaNummer;
 
     Ordre currentOrdre;
-
 
     PizzaMenu pizzaMenu = new PizzaMenu();
     OrdreListe currentOrdreListe = new OrdreListe();
@@ -56,10 +53,9 @@ public class Ordre {
         clearNewOrderPizza();
         setMenuListePizza();
 
-
         amountOfPizzas = getUserInt("Vælg antal pizzaer");
 
-        System.out.println("Vælg pizza nummre:");
+        System.out.print("Vælg pizza nummre:");
         for(int i = 0; i < amountOfPizzas; i++)
         {
             this.pizzaNummer = getUserInt("");
@@ -98,7 +94,6 @@ public class Ordre {
         return "Ordre " + ordreID;
     }
 
-
     public int getUserInt(String prompt){
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
@@ -114,6 +109,4 @@ public class Ordre {
         while (!check);
         return userInput;
     }
-
-
 }
