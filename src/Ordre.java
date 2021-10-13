@@ -2,10 +2,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Ordre {
-    private int ordreID;
+    private static int ordreIDIncrementer = 0;
+    private int ordreID = ordreIDIncrementer;
+    // private int day;              2  // angive dato giver mere mening når man starter programmet, så bare dato stamp fra main måske
+    // private int month;
     private int hour;               // pizza skal være klar kl
     private int minute;
-    // private String ordreStatus;     // måske
+    private String ordreStatus;     // måske
     private int pizzaNummer;
 
     Ordre currentOrdre;
@@ -35,6 +38,7 @@ public class Ordre {
 
     public void clearNewOrderPizza(){
         newOrderPizza.clear();
+        ordreIDIncrementer ++;
     }
 
     public int getOrdreID(int ordreID){
@@ -43,6 +47,7 @@ public class Ordre {
     }
     public void addPizzaToOrder(){
         Scanner scanner = new Scanner(System.in);
+        ordreID = ordreIDIncrementer;
         int amountOfPizzas = 1;
         boolean check = true;
         String comments;
@@ -70,11 +75,11 @@ public class Ordre {
         if(accept.equals("j")){
             System.out.println("Skriv kommentarer:");
             comments = scanner.nextLine();
-            this.currentOrdre = new Ordre(newOrderPizza, hour, minute, comments , ordreID+1);
+            this.currentOrdre = new Ordre(newOrderPizza, hour, minute, comments , ordreID);
             System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + comments +"\nKlar til kl " + hour + ":" + minute);
         }
         else{
-            this.currentOrdre = new Ordre(newOrderPizza, hour, minute, ordreID+1 );
+            this.currentOrdre = new Ordre(newOrderPizza, hour, minute, ordreID );
         System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute);
         }
 
