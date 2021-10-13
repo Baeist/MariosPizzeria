@@ -42,6 +42,8 @@ public class Ordre {
         this.ordreID = ordreID + 1;
         return this.ordreID;
     }
+
+
     public void addPizzaToOrder(){
         Scanner scanner = new Scanner(System.in);
         ordreID = ordreIDIncrementer;
@@ -82,14 +84,16 @@ public class Ordre {
         System.out.println("Accepter ordren(j)?");
         accept = scanner.nextLine();
         if(accept.equals("j")){
-            getOrdreID(ordreID);
-            currentOrdreListe.addOrdre(currentOrdre);
 
-            System.out.println(currentOrdreListe.getCurrentOrders().get(ordreID -1));
+            getOrdreID(ordreID);
+            currentOrdreListe.currentOrders.add(currentOrdre);
+
+            //DEN HER LINJE FUCKER
+            //System.out.println(currentOrdreListe.getCurrentOrders().get(ordreID -1));
         }
-        System.out.println(ordreID);
     }
 
+    // TODO Evt slet.
     public String toString() {
         return "Ordre " + ordreID;
     }

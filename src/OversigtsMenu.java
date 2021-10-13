@@ -26,6 +26,7 @@ class OversigtsMenu {
                     case 4:
                         break;
                     case 5:
+                        pizzaOrdre.currentOrdreListe.removeOrder();
                         break;
                     case 6:
                         break;
