@@ -119,11 +119,12 @@ public class Ordre {
             getOrdreID(ordreID);
             currentOrdreListe.addOrdre(currentOrdre);
 
+            System.out.println(currentOrdreListe.getCurrentOrders().get(0));
         }
 
     }
 
-
-
-
+    public String toString() {
+        return "Ordre " + ordreID;
+    }
 }

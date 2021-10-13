@@ -18,7 +18,7 @@ public class OrdreListe {
        }
 
 
-
-
-
+    public ArrayList<Ordre> getCurrentOrders() {
+        return currentOrders;
+    }
 }

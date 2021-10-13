@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+
 public class Arkiv {
+    ArrayList<OrdreListe> arkiv = new ArrayList<>();
+
+
 
 }
