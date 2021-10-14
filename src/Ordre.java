@@ -19,8 +19,21 @@ public class Ordre {
     ArrayList<Pizza> menuListePizza = new ArrayList<>();
 
     public Ordre(){}
-    public Ordre(ArrayList newPizzaOrder, int time, int hour, int minute, String comment, int orderID){};
-    public Ordre(ArrayList newPizzaOrder, int time, int hour, int minute, int orderID){};
+    public Ordre(ArrayList newPizzaOrder, int time, int hour, int minute, String comment, int orderID){
+        this.time = time;
+        this.hour = hour;
+        this.minute = minute;
+        this.ordreID = orderID;
+        this.newOrderPizza = newPizzaOrder;
+
+    }
+    public Ordre(ArrayList newPizzaOrder, int time, int hour, int minute, int orderID){
+        this.time = time;
+        this.hour = hour;
+        this.minute = minute;
+        this.ordreID = orderID;
+        this.newOrderPizza = newPizzaOrder;
+    };
 
     public void setMenuListePizza(){
         this.menuListePizza = pizzaMenu.pizzaArrayMenu();
