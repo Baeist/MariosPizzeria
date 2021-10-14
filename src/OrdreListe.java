@@ -15,6 +15,13 @@ public class OrdreListe {
         currentOrders.add(newOrder);
 
     }
+    public void showTotalArchiveAmount(){
+        int total = 0;
+        for(int i = 0; i < archiveOrders.size(); i++){
+            total = total + archiveOrders.get(i).getPrice();
+        }
+        System.out.println("Total omsætning for i dag: " + total + "kr.");
+    }
     public void showArchive(){
         System.out.println(archiveOrders);
     }

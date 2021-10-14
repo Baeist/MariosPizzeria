@@ -29,6 +29,7 @@ class OversigtsMenu {
                     break;
                 case 5:
                     pizzaOrdre.currentOrdreListe.showArchive();
+                    pizzaOrdre.currentOrdreListe.showTotalArchiveAmount();
                     break;
                 case 6:
                     pizzaOrdre.currentOrdreListe.showCurrent();
