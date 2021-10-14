@@ -20,9 +20,38 @@ public class OrdreListe {
         System.out.println(currentOrders);
     }
 
-
     public ArrayList<Ordre> getCurrentOrders() {
         return currentOrders;
+    }
+
+    public void sortList() {
+        boolean listIsSortet;
+        do {
+            // checker om en list er sorteret
+            // count tæller hvor mange gange et et tal fra højre er mindre;
+            // hvis count er 0 så er listen soteret
+            int count = 0;
+
+            for (int i = 0; i < currentOrders.size() - 1; i++) {
+
+                if (currentOrders.get(i).getTime() < currentOrders.get(i+1).getTime()) {
+                    count++;
+                }
+            }
+
+            listIsSortet = count == 0;
+
+            if (!listIsSortet) {
+                for (int i = 0; i < currentOrders.size() - 1; i++) {
+                    Ordre ObjectInHand = currentOrders.get(i);
+
+                    if (ObjectInHand.getTime() < currentOrders.get(i + 1).getTime()) {
+                        currentOrders.remove(i);
+                        currentOrders.add(i + 1, ObjectInHand);
+                    }
+                }
+            }
+        } while (!listIsSortet);
     }
 
     public void removeOrder() {

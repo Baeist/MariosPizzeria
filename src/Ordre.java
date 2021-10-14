@@ -23,7 +23,6 @@ public class Ordre {
         this.time = time;
         this.hour = hour;
         this.minute = minute;
-        this.ordreID = orderID;
         this.newOrderPizza = newPizzaOrder;
 
     }
@@ -31,7 +30,6 @@ public class Ordre {
         this.time = time;
         this.hour = hour;
         this.minute = minute;
-        this.ordreID = orderID;
         this.newOrderPizza = newPizzaOrder;
     };
 
@@ -109,6 +107,8 @@ public class Ordre {
 
             getOrdreID(ordreID);
             currentOrdreListe.currentOrders.add(currentOrdre);
+
+            currentOrdreListe.sortList();
 
             //DEN HER LINJE FUCKER
             //System.out.println(currentOrdreListe.getCurrentOrders().get(ordreID -1));
