@@ -106,13 +106,13 @@ public class Ordre {
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, comments , ordreID);
-            System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + comments +"\nKlar til kl " + hour + ":" + minute);
+            System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
         }
         else{
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, ordreID );
-        System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute);
+        System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
 
 
         }
@@ -126,10 +126,6 @@ public class Ordre {
         }
 
             currentOrdreListe.sortList();
-
-
-
-
     }
 
     // TODO Evt slet.
