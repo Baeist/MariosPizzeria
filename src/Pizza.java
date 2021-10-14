@@ -4,9 +4,8 @@ public class Pizza {
     private int nummer;
     private String ingredienser;
     private int pris;
-    private boolean pizzaStatus;
 
-    // Constructore
+    // Constructor
     public Pizza (int nummer, String navn, String ingredienser, int pris) {
         this.nummer = nummer;
         this.navn = navn;

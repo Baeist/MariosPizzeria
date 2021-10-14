@@ -33,7 +33,6 @@ class OversigtsMenu {
                     pizzaOrdre.currentOrdreListe.showTotalArchiveAmount();
                     break;
                 case 6:
-                    pizzaOrdre.currentOrdreListe.showCurrent();
                     pizzaOrdre.currentOrdreListe.removeOrder();
                     break;
                 case 7:

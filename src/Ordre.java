@@ -82,6 +82,55 @@ public class Ordre {
     public String getComments() {
         return comments;
     }
+    public String toString(){
+        return "Ordre " + ordreID;
+    }
+
+    public int getUserInt(){
+        Scanner scanner = new Scanner(System.in);
+        boolean check = true;
+        int userInput = -1;
+        do{
+            if (scanner.hasNextInt()) {
+                userInput = scanner.nextInt();
+                check = true; }
+            else{check = false;}
+            scanner.nextLine();
+        }
+        while (!check);
+        return userInput;
+    }
+    public int getUserInt(String prompt){
+        Scanner scanner = new Scanner(System.in);
+        boolean check = true;
+        int userInput = -1;
+        do{
+            System.out.println(prompt);
+            if (scanner.hasNextInt()) {
+                userInput = scanner.nextInt();
+                check = true; }
+            else{check = false;}
+            scanner.nextLine();
+        }
+        while (!check);
+        return userInput;
+    }
+    public int getUserInt(ArrayList menu) {
+        Scanner scanner = new Scanner(System.in);
+        int choice = 0;
+        int menuSize = menu.size();
+        do {
+            if (scanner.hasNextInt())
+            {choice = scanner.nextInt();}
+
+            if(choice > menuSize || choice < 1){
+                System.out.println("Forkert input.");
+            }
+            scanner.nextLine();
+        }
+        while (choice > menuSize || choice < 1);
+        return choice;
+    }
 
     public void addPizzaToOrder(){
         Scanner scanner = new Scanner(System.in);
@@ -99,7 +148,7 @@ public class Ordre {
         System.out.println("Vælg pizza nummre:");
         for(int i = 0; i < amountOfPizzas; i++)
         {
-            this.pizzaNummer = getUserInt();
+            this.pizzaNummer = getUserInt(pizzaMenu.pizzaArrayMenu());
                setNewOrderPizza(pizzaNummer);
         }
 
@@ -115,61 +164,21 @@ public class Ordre {
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, kommentar, ordreID);
-            System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + this.comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
+            System.out.println("Ordre nummer: " + (ordreID + 1) + "\n" + newOrderPizza + "\n" + this.comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price + " KR.");
         }
         else{
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, ordreID );
-        System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
-
-
+        System.out.println("Ordre nummer: " + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price + " KR.");
         }
 
         System.out.println("Accepter ordren(j)?");
         accept = scanner.nextLine();
         if(accept.equals("j")){
-
             getOrdreID(ordreID);
             currentOrdreListe.currentOrders.add(currentOrdre);
         }
-
             currentOrdreListe.sortList();
     }
-
-    // TODO Evt slet.
-    public String toString() {
-        return "Ordre " + ordreID;
-    }
-
-    public int getUserInt(String prompt){
-        Scanner scanner = new Scanner(System.in);
-        boolean check = true;
-        int userInput = -1;
-        do{
-            System.out.println(prompt);
-            if (scanner.hasNextInt()) {
-                userInput = scanner.nextInt();
-                check = true; }
-            else{check = false;}
-            scanner.nextLine();
-        }
-        while (!check);
-        return userInput;
-    }
-    public int getUserInt(){
-        Scanner scanner = new Scanner(System.in);
-        boolean check = true;
-        int userInput = -1;
-        do{
-            if (scanner.hasNextInt()) {
-                userInput = scanner.nextInt();
-                check = true; }
-            else{check = false;}
-            scanner.nextLine();
-        }
-        while (!check);
-        return userInput;
-    }
-
 }
