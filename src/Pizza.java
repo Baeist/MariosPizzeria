@@ -14,6 +14,10 @@ public class Pizza {
         this.pris = pris;
     }
 
+    public int getPris(){
+        return pris;
+    }
+
     public String toString(){
         return  (nummer + ". " + navn + ": " + pris + " Kr." +"\n" + ingredienser);
     }
