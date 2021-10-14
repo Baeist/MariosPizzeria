@@ -9,22 +9,22 @@ public class Ordre {
     private int pizzaNummer;
     private int time;
     private int price;
+    private String comments;
 
     Ordre currentOrdre;
-
     PizzaMenu pizzaMenu = new PizzaMenu();
     OrdreListe currentOrdreListe = new OrdreListe();
-
     ArrayList<Pizza> newOrderPizza = new ArrayList<>();
     ArrayList<Pizza> menuListePizza = new ArrayList<>();
 
     public Ordre(){}
-    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, String comment, int orderID){
+    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, String comments, int orderID){
         this.price = price;
         this.time = time;
         this.hour = hour;
         this.minute = minute;
         this.newOrderPizza = newPizzaOrder;
+        this.comments = comments;
 
     }
     public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, int orderID){
@@ -41,6 +41,13 @@ public class Ordre {
 
     public void getPizza(int pizzaNummer){
         System.out.println(menuListePizza.get(pizzaNummer - 1));
+    }
+
+    public int getHour() {
+        return hour;
+    }
+    public int getMinute() {
+        return minute;
     }
 
     public void setNewOrderPizza(int pizzaNummer){
@@ -72,14 +79,16 @@ public class Ordre {
     public int getPrice(){
         return price;
     }
-
+    public String getComments() {
+        return comments;
+    }
 
     public void addPizzaToOrder(){
         Scanner scanner = new Scanner(System.in);
         ordreID = ordreIDIncrementer;
         int amountOfPizzas = 0;
         boolean check = true;
-        String comments;
+        String kommentar;
         String accept;
 
         clearNewOrderPizza();
@@ -102,11 +111,11 @@ public class Ordre {
         accept = scanner.nextLine();
         if(accept.equals("j")){
             System.out.println("Skriv kommentarer:");
-            comments = scanner.nextLine();
+            kommentar = scanner.nextLine();
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
-            this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, comments , ordreID);
-            System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
+            this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, kommentar, ordreID);
+            System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\n" + this.comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price);
         }
         else{
             setTime(hour, minute);
@@ -162,4 +171,5 @@ public class Ordre {
         while (!check);
         return userInput;
     }
+
 }

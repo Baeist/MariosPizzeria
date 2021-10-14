@@ -11,7 +11,7 @@ class OversigtsMenu {
 
         printOversigt(menu);
 
-        while (this.running) {
+        while (running) {
             choice = readChoice(menu);
 
             switch (choice) {
@@ -22,7 +22,8 @@ class OversigtsMenu {
                     pizzaMenu.printMenu();
                     break;
                 case 3:
-                    pizzaOrdre.currentOrdreListe.showCurrent();
+                    pizzaOrdre.currentOrdreListe.print();
+                    //pizzaOrdre.currentOrdreListe.showCurrent();
                     break;
                 case 4:
                     pizzaOrdre.currentOrdreListe.archiveOrder();
@@ -39,12 +40,10 @@ class OversigtsMenu {
                     printOversigt(menu);
                     break;
                 case 8:
-                    this.running = false;
+                    running = false;
                     break;
             }
         }
-
-
     }
 
     public void printOversigt(String[] menu) {

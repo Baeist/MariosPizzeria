@@ -101,4 +101,22 @@ public class OrdreListe {
             }
         }
     }
+
+    public void print(){
+
+        for ( int i = 0; i < currentOrders.size(); i++ ){
+            System.out.println(currentOrders.get(i).toString() + ": Afhentning: " + currentOrders.get(i).getHour()
+                    + ":" + currentOrders.get(i).getMinute() + ":");
+
+            for (int n = 0; n < currentOrders.get(i).newOrderPizza.size(); n++) {
+                System.out.println(currentOrders.get(i).newOrderPizza.get(n));
+            }
+
+            System.out.println("Kommentar: " + currentOrders.get(i).getComments());
+            System.out.println();
+        }
+
+
+    }
+
 }
