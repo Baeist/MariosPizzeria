@@ -25,11 +25,13 @@ class OversigtsMenu {
                     pizzaOrdre.currentOrdreListe.showCurrent();
                     break;
                 case 4:
+                    pizzaOrdre.currentOrdreListe.archiveOrder();
                     break;
                 case 5:
-
+                    pizzaOrdre.currentOrdreListe.showArchive();
                     break;
                 case 6:
+                    pizzaOrdre.currentOrdreListe.showCurrent();
                     pizzaOrdre.currentOrdreListe.removeOrder();
                     break;
                 case 7:

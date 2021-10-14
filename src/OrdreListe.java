@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class OrdreListe {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Ordre> currentOrders = new ArrayList<>();
+    ArrayList<Ordre> archiveOrders = new ArrayList<>();
 
     public OrdreListe() {}
     public OrdreListe(ArrayList<Ordre> list) {
@@ -14,7 +15,9 @@ public class OrdreListe {
         currentOrders.add(newOrder);
 
     }
-
+    public void showArchive(){
+        System.out.println(archiveOrders);
+    }
 
     public void showCurrent() {
         System.out.println(currentOrders);
@@ -66,6 +69,25 @@ public class OrdreListe {
                 currentOrders.remove(input-1);
 
                 System.out.println(currentOrders);
+
+            } else {
+                System.out.println("Fokert input");
+            }
+        }
+    }
+    public void archiveOrder() {
+        int input;
+
+        System.out.println("Hvilken ordre vil du arkivere?");
+        showCurrent();
+
+        if (scanner.hasNextInt()) {
+            input = scanner.nextInt();
+            if (input < currentOrders.size() + 1 && input > 0) {
+                archiveOrders.add(currentOrders.get(input-1));
+                currentOrders.remove(input-1);
+
+
 
             } else {
                 System.out.println("Fokert input");

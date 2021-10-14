@@ -99,6 +99,8 @@ public class Ordre {
             setTime(hour, minute);
             this.currentOrdre = new Ordre(newOrderPizza, time, hour, minute, ordreID );
         System.out.println("Ordre nummer: 0" + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute);
+
+
         }
 
         System.out.println("Accepter ordren(j)?");
@@ -107,12 +109,13 @@ public class Ordre {
 
             getOrdreID(ordreID);
             currentOrdreListe.currentOrders.add(currentOrdre);
+        }
 
             currentOrdreListe.sortList();
 
-            //DEN HER LINJE FUCKER
-            //System.out.println(currentOrdreListe.getCurrentOrders().get(ordreID -1));
-        }
+
+
+
     }
 
     // TODO Evt slet.
