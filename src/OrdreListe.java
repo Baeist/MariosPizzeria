@@ -6,7 +6,9 @@ public class OrdreListe {
     ArrayList<Ordre> currentOrders = new ArrayList<>();
     ArrayList<Ordre> archiveOrders = new ArrayList<>();
 
-    public OrdreListe() {}
+    public OrdreListe() {
+    }
+
     public OrdreListe(ArrayList<Ordre> list) {
         this.currentOrders = list;
     }
@@ -15,14 +17,16 @@ public class OrdreListe {
         currentOrders.add(newOrder);
 
     }
-    public void showTotalArchiveAmount(){
+
+    public void showTotalArchiveAmount() {
         int total = 0;
-        for(int i = 0; i < archiveOrders.size(); i++){
+        for (int i = 0; i < archiveOrders.size(); i++) {
             total = total + archiveOrders.get(i).getPrice();
         }
         System.out.println("Total omsætning for i dag: " + total + "kr.");
     }
-    public void showArchive(){
+
+    public void showArchive() {
         System.out.println(archiveOrders);
     }
 
@@ -44,7 +48,7 @@ public class OrdreListe {
 
             for (int i = 0; i < currentOrders.size() - 1; i++) {
 
-                if (currentOrders.get(i).getTime() < currentOrders.get(i+1).getTime()) {
+                if (currentOrders.get(i).getTime() < currentOrders.get(i + 1).getTime()) {
                     count++;
                 }
             }
@@ -73,7 +77,7 @@ public class OrdreListe {
         if (scanner.hasNextInt()) {
             input = scanner.nextInt();
             if (input < currentOrders.size() + 1 && input > 0) {
-                currentOrders.remove(input-1);
+                currentOrders.remove(input - 1);
 
                 System.out.println(currentOrders);
 
@@ -82,6 +86,7 @@ public class OrdreListe {
             }
         }
     }
+
     public void archiveOrder() {
         int input;
 
@@ -91,9 +96,8 @@ public class OrdreListe {
         if (scanner.hasNextInt()) {
             input = scanner.nextInt();
             if (input < currentOrders.size() + 1 && input > 0) {
-                archiveOrders.add(currentOrders.get(input-1));
-                currentOrders.remove(input-1);
-
+                archiveOrders.add(currentOrders.get(input - 1));
+                currentOrders.remove(input - 1);
 
 
             } else {
@@ -102,22 +106,22 @@ public class OrdreListe {
         }
     }
 
-    public void print(){
+    public void print() {
 
-        for ( int i = 0; i < currentOrders.size(); i++ ){
+        for (int i = 0; i < currentOrders.size(); i++) {
             System.out.println(currentOrders.get(i).toString() + ". Afhentning kl: " + currentOrders.get(i).getHour()
                     + ":" + currentOrders.get(i).getMinute() + ".");
 
             for (int n = 0; n < currentOrders.get(i).newOrderPizza.size(); n++) {
-                System.out.println(currentOrders.get(i).newOrderPizza.get(n));
+                System.out.println("  " + currentOrders.get(i).newOrderPizza.get(n));
             }
 
-            if(currentOrders.get(i).getComments() == null){
+            if (currentOrders.get(i).getComments() == null) {
                 System.out.println();
-            }
-            else{
-            System.out.println("Kommentar: " + currentOrders.get(i).getComments());
-            System.out.println();
+            } else {
+                System.out.println("  Kommentar: " + currentOrders.get(i).getComments());
+                System.out.println("  Total Price: " + currentOrders.get(i).getPrice());
+                System.out.println();
             }
         }
 

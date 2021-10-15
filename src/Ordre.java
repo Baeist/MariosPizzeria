@@ -12,13 +12,16 @@ public class Ordre {
     private String comments;
 
     Ordre currentOrdre;
+
     PizzaMenu pizzaMenu = new PizzaMenu();
     OrdreListe currentOrdreListe = new OrdreListe();
     ArrayList<Pizza> newOrderPizza = new ArrayList<>();
     ArrayList<Pizza> menuListePizza = new ArrayList<>();
 
-    public Ordre(){}
-    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, String comments, int orderID){
+    public Ordre() {
+    }
+
+    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, String comments, int orderID) {
         this.price = price;
         this.time = time;
         this.hour = hour;
@@ -27,103 +30,118 @@ public class Ordre {
         this.comments = comments;
 
     }
-    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, int orderID){
+
+    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, int orderID) {
         this.price = price;
         this.time = time;
         this.hour = hour;
         this.minute = minute;
         this.newOrderPizza = newPizzaOrder;
-    };
+    }
 
-    public void setMenuListePizza(){
+    public void setMenuListePizza() {
         this.menuListePizza = pizzaMenu.pizzaArrayMenu();
     }
 
-    public void getPizza(int pizzaNummer){
+    public void getPizza(int pizzaNummer) {
         System.out.println(menuListePizza.get(pizzaNummer - 1));
     }
 
     public int getHour() {
         return hour;
     }
+
     public int getMinute() {
         return minute;
     }
 
-    public void setNewOrderPizza(int pizzaNummer){
+    public void setNewOrderPizza(int pizzaNummer) {
         newOrderPizza.add(menuListePizza.get((pizzaNummer - 1)));
     }
 
-    public void clearNewOrderPizza(){
+    public void clearNewOrderPizza() {
         newOrderPizza.clear();
-        ordreIDIncrementer ++;
+        ordreIDIncrementer++;
     }
 
-    public int getOrdreID(int ordreID){
+    public int getOrdreID(int ordreID) {
         this.ordreID = ordreID + 1;
         return this.ordreID;
     }
-    public void setTime(int hour, int minute){
+
+    public void setTime(int hour, int minute) {
         this.time = hour * 60 + minute;
     }
-    public int getTime(){
+
+    public int getTime() {
         return time;
     }
-    public void setPrice(int amount, ArrayList<Pizza> current){
+
+    public void setPrice(int amount, ArrayList<Pizza> current) {
         int totalPris = 0;
-        for(int i = 0; i < amount; i++){
-        totalPris = current.get(i).getPris() + totalPris;
+        for (int i = 0; i < amount; i++) {
+            totalPris = current.get(i).getPris() + totalPris;
         }
         this.price = totalPris;
     }
-    public int getPrice(){
+
+    public int getPrice() {
         return price;
     }
+
     public String getComments() {
         return comments;
     }
-    public String toString(){
+
+    public String toString() {
         return "Ordre " + ordreID;
     }
 
-    public int getUserInt(){
+    public int getUserInt() {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
         int userInput = -1;
-        do{
+        do {
             if (scanner.hasNextInt()) {
                 userInput = scanner.nextInt();
-                check = true; }
-            else{check = false;}
+                check = true;
+            } else {
+                check = false;
+            }
             scanner.nextLine();
         }
         while (!check);
         return userInput;
     }
-    public int getUserInt(String prompt){
+
+    public int getUserInt(String prompt) {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
         int userInput = -1;
-        do{
+        do {
             System.out.println(prompt);
             if (scanner.hasNextInt()) {
                 userInput = scanner.nextInt();
-                check = true; }
-            else{check = false;}
+                check = true;
+            } else {
+                check = false;
+            }
             scanner.nextLine();
         }
         while (!check);
         return userInput;
     }
+
     public int getUserInt(ArrayList menu) {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         int menuSize = menu.size();
         do {
-            if (scanner.hasNextInt())
-            {choice = scanner.nextInt();}
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+            }
 
-            if(choice > menuSize || choice < 1){
+            if (choice > menuSize || choice < 1) {
                 System.out.println("Forkert input.");
             }
             scanner.nextLine();
@@ -132,7 +150,7 @@ public class Ordre {
         return choice;
     }
 
-    public void addPizzaToOrder(){
+    public void addPizzaToOrder() {
         Scanner scanner = new Scanner(System.in);
         ordreID = ordreIDIncrementer;
         int amountOfPizzas = 0;
@@ -140,16 +158,15 @@ public class Ordre {
         String kommentar;
         String accept;
 
-        clearNewOrderPizza();
+        //clearNewOrderPizza();
         setMenuListePizza();
 
         amountOfPizzas = getUserInt("Vælg antal pizzaer");
 
         System.out.println("Vælg pizza nummre:");
-        for(int i = 0; i < amountOfPizzas; i++)
-        {
+        for (int i = 0; i < amountOfPizzas; i++) {
             this.pizzaNummer = getUserInt(pizzaMenu.pizzaArrayMenu());
-               setNewOrderPizza(pizzaNummer);
+            setNewOrderPizza(pizzaNummer);
         }
 
         this.hour = getUserInt("Vælg timetal for levering:");
@@ -158,27 +175,48 @@ public class Ordre {
 
         System.out.println("Evt. kommentarer(j)?");
         accept = scanner.nextLine();
-        if(accept.equals("j")){
+        if (accept.equals("j")) {
             System.out.println("Skriv kommentarer:");
             kommentar = scanner.nextLine();
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, kommentar, ordreID);
-            System.out.println("Ordre nummer: " + (ordreID + 1) + "\n" + newOrderPizza + "\n" + this.comments +"\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price + " KR.");
-        }
-        else{
+            //System.out.println("Ordre nummer: " + (ordreID + 1) + "\n" + newOrderPizza + "\n" + this.comments + "\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price + " KR.");
+
+            System.out.println("Ordre nummer: " + (ordreID + 1));
+
+            for (int i = 0; i < newOrderPizza.size(); i++) {
+                System.out.println(newOrderPizza.get(i));
+            }
+
+            System.out.println("Kommentar: " + kommentar);
+            System.out.println("Klar til kl " + hour + ":" + minute);
+            System.out.println("Total pris: " + price + " KR.");
+
+
+        } else {
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
-            this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, ordreID );
-        System.out.println("Ordre nummer: " + (ordreID + 1) + "\n" + newOrderPizza + "\nKlar til kl " + hour + ":" + minute + "\n Total pris: " + price + " KR.");
+            this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, ordreID);
+
+            System.out.println("Ordre nummer: " + (ordreID + 1));
+
+            for (int i = 0; i < newOrderPizza.size(); i++) {
+                System.out.println(newOrderPizza.get(i));
+            }
+
+            System.out.println("Klar til kl " + hour + ":" + minute);
+            System.out.println("Total pris: " + price + " KR.");
         }
 
         System.out.println("Accepter ordren(j)?");
         accept = scanner.nextLine();
-        if(accept.equals("j")){
+
+        if (accept.equals("j")) {
             getOrdreID(ordreID);
             currentOrdreListe.currentOrders.add(currentOrdre);
         }
-            currentOrdreListe.sortList();
+
+        currentOrdreListe.sortList();
     }
 }
