@@ -30,8 +30,12 @@ public class OrdreListe {
         System.out.println(archiveOrders);
     }
 
+
+
     public void showCurrent() {
         System.out.println(currentOrders);
+
+
     }
 
     public ArrayList<Ordre> getCurrentOrders() {
@@ -98,8 +102,6 @@ public class OrdreListe {
             if (input < currentOrders.size() + 1 && input > 0) {
                 archiveOrders.add(currentOrders.get(input - 1));
                 currentOrders.remove(input - 1);
-
-
             } else {
                 System.out.println("Fokert input");
             }
@@ -112,11 +114,13 @@ public class OrdreListe {
             System.out.println(currentOrders.get(i).toString() + ". Afhentning kl: " + currentOrders.get(i).getHour()
                     + ":" + currentOrders.get(i).getMinute() + ".");
 
-            for (int n = 0; n < currentOrders.get(i).newOrderPizza.size(); n++) {
-                System.out.println("  " + currentOrders.get(i).newOrderPizza.get(n));
+            for (int n = 0; n < currentOrders.get(i).orderedPizzas.size(); n++) {
+                System.out.println("  " + currentOrders.get(i).orderedPizzas.get(n).toString());
             }
 
             if (currentOrders.get(i).getComments() == null) {
+                System.out.println();
+                System.out.println("  Total Price: " + currentOrders.get(i).getPrice());
                 System.out.println();
             } else {
                 System.out.println("  Kommentar: " + currentOrders.get(i).getComments());

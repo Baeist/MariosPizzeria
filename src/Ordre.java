@@ -10,33 +10,33 @@ public class Ordre {
     private int time;
     private int price;
     private String comments;
+    ArrayList<Pizza> orderedPizzas;
 
     Ordre currentOrdre;
 
     PizzaMenu pizzaMenu = new PizzaMenu();
     OrdreListe currentOrdreListe = new OrdreListe();
-    ArrayList<Pizza> newOrderPizza = new ArrayList<>();
     ArrayList<Pizza> menuListePizza = new ArrayList<>();
 
     public Ordre() {
     }
 
-    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, String comments, int orderID) {
+    public Ordre(ArrayList<Pizza> orderedPizzas, int price, int time, int hour, int minute, String comments, int orderID) {
         this.price = price;
         this.time = time;
         this.hour = hour;
         this.minute = minute;
-        this.newOrderPizza = newPizzaOrder;
+        this.orderedPizzas = orderedPizzas;
         this.comments = comments;
 
     }
 
-    public Ordre(ArrayList newPizzaOrder, int price, int time, int hour, int minute, int orderID) {
+    public Ordre(ArrayList<Pizza> orderedPizzas, int price, int time, int hour, int minute, int orderID) {
         this.price = price;
         this.time = time;
         this.hour = hour;
         this.minute = minute;
-        this.newOrderPizza = newPizzaOrder;
+        this.orderedPizzas = orderedPizzas;
     }
 
     public void setMenuListePizza() {
@@ -55,12 +55,12 @@ public class Ordre {
         return minute;
     }
 
-    public void setNewOrderPizza(int pizzaNummer) {
-        newOrderPizza.add(menuListePizza.get((pizzaNummer - 1)));
+
+    public ArrayList<Pizza> getOrderedPizzas(){
+        return orderedPizzas;
     }
 
     public void clearNewOrderPizza() {
-        newOrderPizza.clear();
         ordreIDIncrementer++;
     }
 
@@ -158,15 +158,17 @@ public class Ordre {
         String kommentar;
         String accept;
 
-        //clearNewOrderPizza();
+        clearNewOrderPizza();
         setMenuListePizza();
 
         amountOfPizzas = getUserInt("Vælg antal pizzaer");
 
         System.out.println("Vælg pizza nummre:");
+        ArrayList newOrderPizza = new ArrayList();
+
         for (int i = 0; i < amountOfPizzas; i++) {
             this.pizzaNummer = getUserInt(pizzaMenu.pizzaArrayMenu());
-            setNewOrderPizza(pizzaNummer);
+            newOrderPizza.add(menuListePizza.get((pizzaNummer - 1)));
         }
 
         this.hour = getUserInt("Vælg timetal for levering:");
@@ -174,6 +176,7 @@ public class Ordre {
         this.minute = getUserInt("Vælg minut tid:");
 
         System.out.println("Evt. kommentarer(j)?");
+
         accept = scanner.nextLine();
         if (accept.equals("j")) {
             System.out.println("Skriv kommentarer:");
