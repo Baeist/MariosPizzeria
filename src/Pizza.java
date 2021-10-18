@@ -18,6 +18,6 @@ public class Pizza {
     }
 
     public String toString(){
-        return  (nummer + ". " + navn + ": " + pris + " KR, " + ingredienser);
+        return  (nummer + ". " + navn + ": " + pris + " kr, " + ingredienser);
     }
 }

@@ -6,7 +6,7 @@ class OversigtsMenu {
     Ordre pizzaOrdre = new Ordre();
 
     public void run() {
-        String[] menu = {"1: Ny ordre.", "2: Se Menu.", "3: Se ordre liste.", "4: Afslut ordre og put i arkiv.", "5: Se arkiv.", "6: Rediger ordreliste", "7: Hjælp", "8: Luk program"};
+        String[] menu = {"1: Ny ordre.", "2: Se Menu.", "3: Se ordre liste.", "4: Afslut ordre og put i arkiv.", "5: Se arkiv.", "6: Afslut ordre og slet.", "7: Hjælp", "8: Luk program"};
         int choice;
 
         printOversigt(menu);
@@ -22,14 +22,15 @@ class OversigtsMenu {
                     pizzaMenu.printMenu();
                     break;
                 case 3:
+                    pizzaOrdre.currentOrdreListe.sortList();
                     pizzaOrdre.currentOrdreListe.print();
-                    //pizzaOrdre.currentOrdreListe.showCurrent();
                     break;
                 case 4:
+                    pizzaOrdre.currentOrdreListe.sortListByID();
                     pizzaOrdre.currentOrdreListe.archiveOrder();
                     break;
                 case 5:
-                    pizzaOrdre.currentOrdreListe.showArchive();
+                    pizzaOrdre.currentOrdreListe.printArchive();
                     pizzaOrdre.currentOrdreListe.showTotalArchiveAmount();
                     break;
                 case 6:
@@ -58,7 +59,8 @@ class OversigtsMenu {
         int menuSize = menu.length;
 
         do {
-            System.out.println("Vælg:");
+            System.out.println();
+            System.out.println("Vælg nyt menupunkt:");
             if (scanner.hasNextInt())
                 choice = scanner.nextInt();
             scanner.nextLine();

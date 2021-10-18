@@ -60,13 +60,16 @@ public class Ordre {
         return orderedPizzas;
     }
 
-    public void clearNewOrderPizza() {
+    public void incrementOrderID() {
         ordreIDIncrementer++;
     }
 
     public int getOrdreID(int ordreID) {
         this.ordreID = ordreID + 1;
         return this.ordreID;
+    }
+    public int getOrdreID(){
+        return ordreID;
     }
 
     public void setTime(int hour, int minute) {
@@ -158,10 +161,10 @@ public class Ordre {
         String kommentar;
         String accept;
 
-        clearNewOrderPizza();
+        incrementOrderID();
         setMenuListePizza();
 
-        amountOfPizzas = getUserInt("Vælg antal pizzaer");
+        amountOfPizzas = getUserInt("Vælg antal pizzaer:");
 
         System.out.println("Vælg pizza nummre:");
         ArrayList newOrderPizza = new ArrayList();
@@ -171,9 +174,9 @@ public class Ordre {
             newOrderPizza.add(menuListePizza.get((pizzaNummer - 1)));
         }
 
-        this.hour = getUserInt("Vælg timetal for levering:");
+        this.hour = getUserInt("Vælg tidspunkt for levering(timetal):");
 
-        this.minute = getUserInt("Vælg minut tid:");
+        this.minute = getUserInt("Vælg tidspunkt for levering(minutter):");
 
         System.out.println("Evt. kommentarer(j)?");
 
@@ -194,7 +197,7 @@ public class Ordre {
 
             System.out.println("Kommentar: " + kommentar);
             System.out.println("Klar til kl " + hour + ":" + minute);
-            System.out.println("Total pris: " + price + " KR.");
+            System.out.println("Total pris: " + price + " kr.");
 
 
         } else {
@@ -209,7 +212,7 @@ public class Ordre {
             }
 
             System.out.println("Klar til kl " + hour + ":" + minute);
-            System.out.println("Total pris: " + price + " KR.");
+            System.out.println("Total pris: " + price + " kr.");
         }
 
         System.out.println("Accepter ordren(j)?");
@@ -220,6 +223,6 @@ public class Ordre {
             currentOrdreListe.currentOrders.add(currentOrdre);
         }
 
-        currentOrdreListe.sortList();
+
     }
 }
