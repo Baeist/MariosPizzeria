@@ -5,6 +5,7 @@ class OversigtsMenu {
     PizzaMenu pizzaMenu = new PizzaMenu();
     Ordre pizzaOrdre = new Ordre();
 
+    //oversigtmenu valgmuligheder
     public void run() {
         String[] menu = {"1: Ny ordre.", "2: Se Menu.", "3: Se ordre liste.", "4: Afslut ordre og put i arkiv.", "5: Se arkiv.", "6: Afslut ordre og slet.", "7: Hjælp", "8: Luk program"};
         int choice;
@@ -15,31 +16,31 @@ class OversigtsMenu {
             choice = readChoice(menu);
 
             switch (choice) {
-                case 1:
+                case 1: //ny ordre
                     pizzaOrdre.addPizzaToOrder();
                     break;
-                case 2:
+                case 2: //se menu
                     pizzaMenu.printMenu();
                     break;
-                case 3:
+                case 3: //se ordre liste
                     pizzaOrdre.currentOrdreListe.sortList();
                     pizzaOrdre.currentOrdreListe.print();
                     break;
-                case 4:
+                case 4: //afslut ordre og put i arkiv
                     pizzaOrdre.currentOrdreListe.sortListByID();
                     pizzaOrdre.currentOrdreListe.archiveOrder();
                     break;
-                case 5:
+                case 5: //se arkiv
                     pizzaOrdre.currentOrdreListe.printArchive();
                     pizzaOrdre.currentOrdreListe.showTotalArchiveAmount();
                     break;
-                case 6:
+                case 6: //afslut ordre og slet
                     pizzaOrdre.currentOrdreListe.removeOrder();
                     break;
-                case 7:
+                case 7: //hjælp
                     printOversigt(menu);
                     break;
-                case 8:
+                case 8: //afslut program
                     running = false;
                     break;
             }

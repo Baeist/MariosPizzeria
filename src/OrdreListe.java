@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Arkiv og nuværende ordre
 public class OrdreListe {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Ordre> currentOrders = new ArrayList<>();

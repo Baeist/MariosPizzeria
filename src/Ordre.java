@@ -4,13 +4,14 @@ import java.util.ArrayList;
 public class Ordre {
     private static int ordreIDIncrementer = 0;
     private int ordreID = ordreIDIncrementer;
-    private int hour;               // pizza skal være klar kl
-    private int minute;
-    private int pizzaNummer;
-    private int time;
-    private int price;
-    private String comments;
-    ArrayList<Pizza> orderedPizzas;
+    private int hour;               // Hvilke time pizzaen skal være klar
+    private int minute;             //hvilke minutter pizzaen skal være klar
+    private int pizzaNummer;        //nummeret på pizzaen
+    private int time;               //udregnet tid som int pizzaen skal være klar
+    private int price;              //prisen på pizzaen
+    private String comments;        //kommentar på pizzaen
+    ArrayList<Pizza> orderedPizzas; //hvilke pizzaer der er bestilt
+
 
     Ordre currentOrdre;
 
@@ -21,6 +22,7 @@ public class Ordre {
     public Ordre() {
     }
 
+    //ordre med kommentar
     public Ordre(ArrayList<Pizza> orderedPizzas, int price, int time, int hour, int minute, String comments, int orderID) {
         this.price = price;
         this.time = time;
@@ -31,6 +33,7 @@ public class Ordre {
 
     }
 
+    //ordre uden kommentar
     public Ordre(ArrayList<Pizza> orderedPizzas, int price, int time, int hour, int minute, int orderID) {
         this.price = price;
         this.time = time;
@@ -135,6 +138,7 @@ public class Ordre {
         return userInput;
     }
 
+    //user input to get int
     public int getUserInt(ArrayList menu) {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
@@ -153,6 +157,7 @@ public class Ordre {
         return choice;
     }
 
+    //tilføjelse af pizzaer til ordre
     public void addPizzaToOrder() {
         Scanner scanner = new Scanner(System.in);
         ordreID = ordreIDIncrementer;
@@ -174,12 +179,15 @@ public class Ordre {
             newOrderPizza.add(menuListePizza.get((pizzaNummer - 1)));
         }
 
+        //valg af levering tidspunkt
         this.hour = getUserInt("Vælg tidspunkt for levering(timetal):");
 
         this.minute = getUserInt("Vælg tidspunkt for levering(minutter):");
 
+        //Valg af om der skal være kommentar
         System.out.println("Evt. kommentarer(j)?");
 
+        //hvis der er kommentar
         accept = scanner.nextLine();
         if (accept.equals("j")) {
             System.out.println("Skriv kommentarer:");
@@ -200,7 +208,7 @@ public class Ordre {
             System.out.println("Total pris: " + price + " kr.");
 
 
-        } else {
+        } else { //hvis der ikke er en kommentar
             setTime(hour, minute);
             setPrice(amountOfPizzas, newOrderPizza);
             this.currentOrdre = new Ordre(newOrderPizza, price, time, hour, minute, ordreID);

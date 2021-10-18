@@ -1,4 +1,4 @@
-public class Pizza {
+public class Pizza { //objekt pizza
 
     private String navn;
     private int nummer;

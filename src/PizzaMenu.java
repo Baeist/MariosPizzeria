@@ -19,6 +19,7 @@ public class PizzaMenu {
 
     PizzaMenu() {  }
 
+    //Arrayliste menu
     public ArrayList pizzaArrayMenu(){
         ArrayList<Pizza> pizzaArrayList = new ArrayList<Pizza>();
         pizzaArrayList.add(p1);
@@ -39,6 +40,7 @@ public class PizzaMenu {
         return pizzaArrayList;
     }
 
+    //print menu
     public void printMenu(){
         System.out.println(p1);
         System.out.println(p2);
