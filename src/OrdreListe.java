@@ -76,7 +76,7 @@ public class OrdreListe {
 
             for (int i = 0; i < currentOrders.size() - 1; i++) {
 
-                if (currentOrders.get(i).getOrdreID() < currentOrders.get(i + 1).getOrdreID()) {
+                if (currentOrders.get(i).getOrdreID() > currentOrders.get(i + 1).getOrdreID()) {
                     count++;
                 }
             }
@@ -87,7 +87,7 @@ public class OrdreListe {
                 for (int i = 0; i < currentOrders.size() - 1; i++) {
                     Ordre ObjectInHand = currentOrders.get(i);
 
-                    if (ObjectInHand.getOrdreID() < currentOrders.get(i + 1).getOrdreID()) {
+                    if (ObjectInHand.getOrdreID() > currentOrders.get(i + 1).getOrdreID()) {
                         currentOrders.remove(i);
                         currentOrders.add(i + 1, ObjectInHand);
                     }
@@ -162,7 +162,7 @@ public class OrdreListe {
             for (int n = 0; n < archiveOrders.get(i).orderedPizzas.size(); n++) {
                 System.out.println("  " + archiveOrders.get(i).orderedPizzas.get(n).toString());
             }
-                System.out.println("  Total pris: " + archiveOrders.get(i).getPrice() + " kr.");
+                System.out.println("  Total pris: " + archiveOrders.get(i).getPrice() + " kr.\n");
         }
     }
 }
